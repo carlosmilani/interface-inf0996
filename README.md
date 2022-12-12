@@ -1,1 +1,1 @@
-# interface-inf0996
+# Trabalho de INF-0996, interface de um MediaPlayer.
