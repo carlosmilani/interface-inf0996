@@ -1,0 +1,33 @@
+﻿<Window x:Class="Interface_0996.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interface_0996"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1050" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock Text="{Binding MidiaSelecionada.MediaState}" />
+        <MediaElement Name="me" VerticalAlignment="Top" LoadedBehavior="Manual" UnloadedBehavior="Manual" Stretch="Fill" Height="750" Width="1500" Source="{Binding Source}"/>
+        <StackPanel Margin = "0,0,0,170" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Margin = "70,0,70,0" Height="32" Width="64" CommandParameter="{Binding}" Command="{Binding Pausex}" Content="Pause" />
+            <Button Margin = "70,0,70,0" Height="32" Width="64" CommandParameter="{Binding}" Command="{Binding Playx}" Content="Play" />
+            <Button Margin = "70,0,70,0" Height="32" Width="64" CommandParameter="{Binding}" Command="{Binding Stopx}" Content="Stop" />
+            <Button Margin = "70,0,0,0" Height="32" Width="64" CommandParameter="{Binding}" IsCancel="true" Command="{Binding Sairx}" Content="Sair"/>
+            <Slider ValueChanged = "VolSlider_OnValueChanged" Margin = "30,0,0,0" VerticalAlignment="Center" Name="slider_vol" Width = "100" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="1" />
+        </StackPanel>
+        <StackPanel Orientation = "Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin = "0,0,120,30">
+            <Button VerticalAlignment="Top" Height="32" Width="64" Content="Open" CommandParameter="{Binding}" Command="{Binding Openx}"/>
+            <ListBox Background="White" Height = "130" Width = "670" ItemsSource="{Binding playList}" SelectedItem = "{Binding SelectMedia}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FileName}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+        </StackPanel>
+        <Button Content="Select" Height="32" Width="64" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,790,80" CommandParameter="{Binding}" Command="{Binding Selectx}"/>
+        <Button Content="Delete" Height="32" Width="64" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,790,30" CommandParameter="{Binding}" Command="{Binding Deletarx}"/>
+        <Slider ValueChanged="SeekSlider_OnValueChanged" Name = "slider_seek" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin = "100,0,100,230"/>
+    </Grid>
+</Window>
